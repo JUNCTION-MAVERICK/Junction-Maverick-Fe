@@ -3,8 +3,9 @@ import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 
 // 개발 환경용 로컬 서버 URL
-export const API_BASE_URL = "http://localhost:8080";
-// const API_BASE_URL = "https://api.maverick.com";
+// export const API_BASE_URL = "http://localhost:8080";
+// 운영 환경용 배포 서버 URL
+export const API_BASE_URL = "https://api.junction-maverick.store";
 const API_CLIENT_ID = "";
 const API_TIMEOUT = 10000;
 
