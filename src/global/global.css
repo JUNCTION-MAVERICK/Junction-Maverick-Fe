@@ -36,7 +36,7 @@ button {
   font-family: inherit;
 }
 button.border {
-  border: 1px solid !important;
+  border: solid !important;
 }
 
 /* 리스트 스타일 리셋 */
@@ -58,7 +58,8 @@ img {
 
 :root {
   --color-primary: #0660fe;
-  --color-secondary: #f9fafe;
+  --color-secondary: #171717;
+  --color-tertiary: #f9fafe;
   --color-bg: #e9f1fc;
   --color-text: #000000;
   --color-alert-caution: #ffc107;

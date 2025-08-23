@@ -6,6 +6,7 @@ import NotFound from "@/pages/NotFound";
 import DailySafetyCheck from "@/pages/safety-check/DailySafetyCheck";
 import DailySafetyCheckFinish from "@/pages/safety-check/DailySafetyCheckFininsh";
 import DailySafetyCheckList from "@/pages/safety-check/DailySafetyCheckLIst";
+import SearchSite from "@/pages/safety-check/SearchSite";
 import SiteInfoRegister from "@/pages/safety-check/SiteInfoRegister";
 import { createRoutesFromElements, Route } from "react-router-dom";
 
@@ -21,6 +22,8 @@ const routes = createRoutesFromElements(
       element={<DailySafetyCheckFinish />}
     />
     <Route path="/analysis" element={<Analysis />} />
+    <Route path="/site-info-register/search-site" element={<SearchSite />} />
+
     <Route path="*" element={<NotFound />} />
   </Route>
 );

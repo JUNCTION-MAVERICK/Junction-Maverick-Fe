@@ -20,7 +20,9 @@ export const ParamsUtils = {
   /**
    * 객체를 URL 파라미터로 변환
    */
-  buildQueryString: (params: Record<string, any>): string => {
+  buildQueryString: (
+    params: Record<string, string | number | boolean>
+  ): string => {
     const searchParams = new URLSearchParams();
 
     Object.entries(params).forEach(([key, value]) => {
@@ -51,7 +53,7 @@ export const ParamsUtils = {
    * URL 파라미터 업데이트
    */
   updateParams: (
-    newParams: Record<string, any>,
+    newParams: Record<string, string | number | boolean>,
     replace: boolean = false
   ): void => {
     const currentParams = ParamsUtils.getCurrentParams();

@@ -1,18 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import dayjs from "@/global/utils/dayjs";
 import { useState } from "react";
-import BottomMenu from "@/components/BottomMenu/BottomMenu";
 
 /**
  *
  * @returns 홈, 대시보드
  */
 export default function Home() {
-  const [isRegister] = useState<boolean>(true);
+  const [isRegister] = useState<boolean>(false);
 
   return (
-    <div className="w-full px-[20px] pt-[77px] pb-[160px] overflow-x-hidden">
-      <main className="w-full">
+    <>
+      <main className="w-full px-[20px] pt-[77px] pb-[160px]">
         <div className="flex justify-between items-center">
           <div>
             <p className="text-[18px] leading-[160%] text-[var(--gray-900)] font-semibold">
@@ -36,7 +35,7 @@ export default function Home() {
           <img src="/images/arrow_right.svg" alt="arrow-right" />
         </div>
         {!isRegister && (
-          <div className="mt-[14px] w-full h-[104px] bg-[var(--color-secondary)] rounded-[20px] shadow-[0px_0px_20px_-4px_rgba(187,192,199,0.5)] px-[27px] py-[22px]">
+          <div className="mt-[14px] w-full h-[104px] bg-[var(--color-tertiary)] rounded-[20px] shadow-[0px_0px_20px_-4px_rgba(187,192,199,0.5)] px-[27px] py-[22px]">
             <p className="text-[18px] leading-[160%] font-medium text-[var(--color-text)]">
               Site safety score / Risk score
             </p>
@@ -54,7 +53,7 @@ export default function Home() {
 
         <TitleText title="Today’s Site Info" className="mt-[37px] mb-[14px]" />
         <TodaySiteInfoCard
-          isRegister={true}
+          isRegister={isRegister}
           address={
             isRegister
               ? "123, Teheran-ro,\nGangnam-gu, Seoul, Korea"
@@ -62,8 +61,7 @@ export default function Home() {
           }
         />
       </main>
-      <BottomMenu />
-    </div>
+    </>
   );
 }
 
@@ -87,7 +85,7 @@ function TitleText({
 /** 안전점수 */
 function SafetyScore() {
   return (
-    <div className="w-full bg-[var(--color-secondary)] rounded-[20px] py-[20px] px-[16px] shadow-[0px_0px_20px_-4px_rgba(187,192,199,0.5)]">
+    <div className="w-full bg-[var(--color-tertiary)] rounded-[20px] py-[20px] px-[16px] shadow-[0px_0px_20px_-4px_rgba(187,192,199,0.5)]">
       <p className="text-center text-[18px] font-medium">Site safety score</p>
       <div className="flex justify-center items-baseline gap-[2px] mr-[calc(-1px)]">
         <p className="text-[40px] font-bold text-[var(--color-alert-safe)]">
@@ -103,7 +101,7 @@ function SafetyScore() {
 /** 위험률 */
 function RiskScore() {
   return (
-    <div className="w-full bg-[var(--color-secondary)] rounded-[20px] py-[20px] px-[16px] shadow-[0px_0px_20px_-4px_rgba(187,192,199,0.5)]">
+    <div className="w-full bg-[var(--color-tertiary)] rounded-[20px] py-[20px] px-[16px] shadow-[0px_0px_20px_-4px_rgba(187,192,199,0.5)]">
       <p className="text-center text-[18px] font-medium">Risk score</p>
       <div className="flex justify-center items-baseline gap-[2px] mr-[calc(-1px)]">
         <p className="text-[40px] font-bold text-[var(--color-alert-dangers)]">
@@ -162,7 +160,7 @@ function TodaySiteInfoCard({
       {isRegister && (
         <button
           onClick={() => {}}
-          className="w-[65px] h-[62px] whitespace-nowrap absolute bottom-0 right-0 bg-[var(--color-secondary)] text-[20px] leading-[160%] font-bold text-[var(--color-secondary)] rounded-tl-[30px] py-[10px] flex justify-center items-center gap-[17px]"
+          className="w-[65px] h-[62px] whitespace-nowrap absolute bottom-0 right-0 bg-[var(--color-tertiary)] text-[20px] leading-[160%] font-bold text-[var(--color-tertiary)] rounded-tl-[30px] py-[10px] flex justify-center items-center gap-[17px]"
         >
           <img src="/images/arrow_right_pointer_blue.svg" alt="arrow-right" />
         </button>
@@ -170,7 +168,7 @@ function TodaySiteInfoCard({
       {!isRegister && (
         <button
           onClick={() => navigate("/daily-safety-check")}
-          className="pl-[29px] pr-[23px] h-[62px] whitespace-nowrap absolute bottom-0 right-0 bg-[var(--color-primary)] text-[20px] leading-[160%] font-bold text-[var(--color-secondary)] rounded-tl-[30px] py-[10px] px-[16px] flex justify-between items-center gap-[17px]"
+          className="pl-[29px] pr-[23px] h-[62px] whitespace-nowrap absolute bottom-0 right-0 bg-[var(--color-primary)] text-[20px] leading-[160%] font-bold text-[var(--color-tertiary)] rounded-tl-[30px] py-[10px] px-[16px] flex justify-between items-center gap-[17px]"
         >
           Start AI Safety Check
           <img src="/images/arrow_right_pointer.svg" alt="arrow-right" />
