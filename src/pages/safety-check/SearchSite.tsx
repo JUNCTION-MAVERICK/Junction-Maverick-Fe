@@ -11,7 +11,7 @@ export default function SearchSite() {
   const search = searchParams.get("search") ?? "";
   const { setSiteAddress } = useSiteStore();
   const { data: siteList } = useGetConstructionAddressList({
-    keyword: "",
+    keyword: search,
   });
 
   // 하이라이트 함수
@@ -86,7 +86,7 @@ export default function SearchSite() {
               className="flex justify-start items-start gap-[13px] px-[20px] pt-[10px] pb-[13px] bg-[var(--color-tertiary)] hover:bg-[var(--color-bg)] active:bg-[var(--color-bg)] rounded-[10px] transition-colors duration-200"
               onClick={() => {
                 setSiteAddress(site.englishStreetAddress);
-                navigate(`/site-info-register`);
+                navigate(`/site-info-register`, { replace: true });
               }}
             >
               <img src="/images/search.svg" alt="search" className="mt-[2px]" />

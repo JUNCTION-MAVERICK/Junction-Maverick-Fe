@@ -67,9 +67,7 @@ export default function SiteInfoRegister() {
               readOnly
             />
             <button
-              onClick={() =>
-                navigate("/site-info-register/search-site", { replace: true })
-              }
+              onClick={() => navigate("/site-info-register/search-site")}
               className="absolute right-[22px] top-1/2 -translate-y-1/2"
             >
               <img src="/images/search.svg" alt="search" />
