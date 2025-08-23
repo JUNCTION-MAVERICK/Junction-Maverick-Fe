@@ -33,6 +33,9 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
+button.border {
+  border: 1px solid !important;
+}
 
 /* 리스트 스타일 리셋 */
 ul,
