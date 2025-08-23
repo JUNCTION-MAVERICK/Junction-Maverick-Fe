@@ -68,3 +68,24 @@ img {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+:root {
+  --color-primary: #0660fe;
+  --color-secondary: #f9fafe;
+  --color-bg: #e9f1fc;
+  --color-text: #000000;
+  --color-alert-caution: #ffc107;
+  --color-alert-dangers: #e53935;
+  --color-alert-safe: #43a047;
+
+  --gray-50: #fdfeff;
+  --gray-100: #f8fbfe;
+  --gray-200: #f5f9fe;
+  --gray-300: #f0f6fd;
+  --gray-400: #edf4fd;
+  --gray-500: #e9f1fc;
+  --gray-600: #d4dbe5;
+  --gray-700: #a5abb3;
+  --gray-800: #80858b;
+  --gray-900: #62656a;
+}
