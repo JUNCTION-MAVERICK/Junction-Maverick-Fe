@@ -5,7 +5,7 @@ import { createRoutesFromElements, Route } from "react-router-dom";
 
 const routes = createRoutesFromElements(
   <>
-    <Route path="/" element={<Home />} />
+    <Route index path="/" element={<Home />} />
     <Route path="/login" element={<LoginPage />} />
 
     <Route path="*" element={<NotFound />} />
