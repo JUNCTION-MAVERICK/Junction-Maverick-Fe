@@ -1,3 +1,4 @@
+import Layout from "@/components/layout/Layout";
 import Analysis from "@/pages/analysis/Analysis";
 import LoginPage from "@/pages/auth/LoginPage";
 import Home from "@/pages/Home";
@@ -9,7 +10,7 @@ import SiteInfoRegister from "@/pages/safety-check/SiteInfoRegister";
 import { createRoutesFromElements, Route } from "react-router-dom";
 
 const routes = createRoutesFromElements(
-  <>
+  <Route path="/" element={<Layout />}>
     <Route index path="/" element={<Home />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/daily-safety-check" element={<DailySafetyCheck />} />
@@ -21,7 +22,7 @@ const routes = createRoutesFromElements(
     />
     <Route path="/analysis" element={<Analysis />} />
     <Route path="*" element={<NotFound />} />
-  </>
+  </Route>
 );
 
 export default routes;
