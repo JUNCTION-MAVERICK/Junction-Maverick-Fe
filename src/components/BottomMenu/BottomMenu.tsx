@@ -27,7 +27,10 @@ export default function BottomMenu() {
         >
           <img
             src={`/images/Daily_Check_${
-              location.pathname === "/daily-safety-check" ? "on" : "off"
+              location.pathname === "/daily-safety-check" ||
+              location.pathname === "/daily-safety-check-finish"
+                ? "on"
+                : "off"
             }.svg`}
             alt="home"
           />

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface SiteInfo {
+  addressId: number;
   siteAddress: string;
   numberOfWorkers: string;
   checkListCheck: string;
@@ -11,6 +12,7 @@ interface SiteInfo {
 interface SiteStore {
   siteInfo: SiteInfo;
   setSiteAddress: (name: string) => void;
+  setAddressId: (id: number) => void;
   setNumberOfWorkers: (count: string) => void;
   setCheckListCheck: (type: string) => void;
   setWorkDate: (date: string) => void;
@@ -21,11 +23,16 @@ export const useSiteStore = create<SiteStore>()(
   persist(
     (set) => ({
       siteInfo: {
+        addressId: 0,
         siteAddress: "",
         numberOfWorkers: "",
         checkListCheck: "",
         workDate: new Date().toISOString().split("T")[0],
       },
+      setAddressId: (id: number) =>
+        set((state) => ({
+          siteInfo: { ...state.siteInfo, addressId: id },
+        })),
       setSiteAddress: (name: string) =>
         set((state) => ({
           siteInfo: { ...state.siteInfo, siteAddress: name },
@@ -45,6 +52,7 @@ export const useSiteStore = create<SiteStore>()(
       resetSiteInfo: () =>
         set({
           siteInfo: {
+            addressId: 0,
             siteAddress: "",
             numberOfWorkers: "",
             checkListCheck: "",

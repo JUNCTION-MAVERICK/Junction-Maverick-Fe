@@ -9,11 +9,10 @@ export default function SearchSite() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") ?? "";
-  const { setSiteAddress } = useSiteStore();
+  const { setSiteAddress, setAddressId } = useSiteStore();
   const { data: siteList } = useGetConstructionAddressList({
     keyword: search,
   });
-
   // 하이라이트 함수
   const highlightText = (text: string | undefined, searchTerm: string) => {
     // text가 undefined이거나 빈 문자열인 경우 처리
@@ -86,6 +85,7 @@ export default function SearchSite() {
               className="flex justify-start items-start gap-[13px] px-[20px] pt-[10px] pb-[13px] bg-[var(--color-tertiary)] hover:bg-[var(--color-bg)] active:bg-[var(--color-bg)] rounded-[10px] transition-colors duration-200"
               onClick={() => {
                 setSiteAddress(site.englishStreetAddress);
+                setAddressId(site.addressId);
                 navigate(`/site-info-register`, { replace: true });
               }}
             >

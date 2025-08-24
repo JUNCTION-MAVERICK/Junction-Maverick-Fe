@@ -24,3 +24,33 @@ export function useGetCheckList() {
 
   return mutation;
 }
+export type TPostAnalysisRequestReq = {
+  addressId: number;
+  numOfWorkers: number;
+  addressInfoList: {
+    title: string;
+    description: string;
+    answer: boolean;
+  }[];
+};
+export function usePostAnalysisRequest() {
+  const mutation = useMutation<
+    IBaseResponse<unknown>,
+    IBaseErrorResponse<unknown>,
+    TPostAnalysisRequestReq
+  >({
+    mutationFn: (variables) => {
+      return defaultQueryFn<IBaseResponse<unknown>>({
+        queryKey: [
+          {
+            url: "/api/safety-assessment/analyze",
+            method: "POST",
+            data: variables,
+          },
+        ],
+      });
+    },
+  });
+
+  return mutation;
+}

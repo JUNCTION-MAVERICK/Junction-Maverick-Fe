@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { useSiteStore } from "@/global/stores";
 import { useGetCheckList } from "@/global/api/check-list/checklist.api";
 import LoadingPage from "@/components/Loading/LoadingPage";
+import { useCheckListStore } from "@/global/stores/checklistStore";
 
 export default function SiteInfoRegister() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { siteInfo, setNumberOfWorkers, setCheckListCheck, resetSiteInfo } =
-    useSiteStore();
+  const { siteInfo, setNumberOfWorkers, setCheckListCheck } = useSiteStore();
+  const { setAnalysisRequest } = useCheckListStore();
   const { mutate: getCheckList } = useGetCheckList();
 
   const isDisabledNavigate = useMemo(() => {
@@ -30,13 +31,19 @@ export default function SiteInfoRegister() {
   };
 
   const onClickSubmit = () => {
-    resetSiteInfo();
     setIsLoading(true);
     getCheckList(
-      { addressId: 1 },
+      { addressId: siteInfo.addressId },
       {
         onSuccess: (data) => {
-          console.log(data);
+          if (data.data.length > 0) {
+            setAnalysisRequest({
+              addressId: siteInfo?.addressId ?? 0,
+              numOfWorkers: Number(siteInfo?.numberOfWorkers ?? 0),
+              addressInfoList: data.data ?? [],
+            });
+            navigate("/daily-safety-check-list", { replace: true });
+          }
         },
         onError: (error) => {
           console.log(error);

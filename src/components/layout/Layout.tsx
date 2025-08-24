@@ -6,9 +6,13 @@ export default function Layout() {
   return (
     <div className="w-full h-screen bg-[var(--color-bg)] relative">
       <Outlet />
-      {["/", "/daily-safety-check", "/analysis", "/my"].includes(
-        location.pathname
-      ) ? (
+      {[
+        "/",
+        "/daily-safety-check",
+        "/daily-safety-check-finish",
+        "/analysis",
+        "/my",
+      ].includes(location.pathname) ? (
         <BottomMenu />
       ) : null}
     </div>

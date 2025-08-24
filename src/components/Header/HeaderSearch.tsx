@@ -1,6 +1,5 @@
-import { useSiteStore } from "@/global/stores";
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function HeaderSearch({
   theme = "light",
@@ -8,31 +7,31 @@ export default function HeaderSearch({
   theme?: "dark" | "light";
 }) {
   const navigate = useNavigate();
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const search = searchParams.get("search") ?? "";
-  const { siteInfo, setSiteAddress } = useSiteStore();
-  const [inputValue, setInputValue] = useState<string>(siteInfo.siteAddress);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("search") ?? "";
+  const [inputValue, setInputValue] = useState<string>(search);
 
   // 디바운스된 검색 함수
   const debouncedSearch = useCallback(
     (value: string) => {
       const timeoutId = setTimeout(() => {
         if (value.trim()) {
-          setSiteAddress(value);
+          setSearchParams({ search: value });
         } else {
-          setSiteAddress("");
+          setSearchParams({ search: "" });
         }
       }, 500);
       return () => clearTimeout(timeoutId);
     },
-    [inputValue, setSiteAddress]
+    [inputValue, setSearchParams]
   );
+  console.log({ inputValue });
 
   // input 값이 변경될 때마다 디바운스 적용
   useEffect(() => {
     const cleanup = debouncedSearch(inputValue);
     return cleanup;
-  }, [inputValue, debouncedSearch]);
+  }, [inputValue, debouncedSearch, setSearchParams]);
 
   return (
     <div
@@ -69,7 +68,7 @@ export default function HeaderSearch({
           className="absolute right-[17px] top-1/2 -translate-y-1/2 w-[18px] h-[18px] flex justify-center items-center"
           onClick={() => {
             setInputValue("");
-            setSiteAddress("");
+            setSearchParams({ search: "" });
           }}
         >
           <img
