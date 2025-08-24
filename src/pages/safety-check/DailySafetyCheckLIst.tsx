@@ -14,6 +14,7 @@ export default function DailySafetyCheckList() {
   );
 
   const handleSubmit = () => {
+    console.log("");
     postAnalysisRequest(
       {
         addressId: analysisRequest.addressId ?? 0,
