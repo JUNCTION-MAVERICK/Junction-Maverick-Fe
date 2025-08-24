@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSiteStore } from "@/global/stores";
 import { useGetCheckList } from "@/global/api/check-list/checklist.api";
 import LoadingPage from "@/components/Loading/LoadingPage";
-import { useCheckListStore } from "@/global/stores/checklistStore";
+import { useCheckListStore } from "@/global/stores/checkListStore";
 
 export default function SiteInfoRegister() {
   const navigate = useNavigate();

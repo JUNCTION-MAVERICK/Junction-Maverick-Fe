@@ -22,7 +22,7 @@ export default function Home() {
             </p>
           </div>
           <img
-            src={""}
+            src={"/images/profile.svg"}
             alt="profile"
             className="block rounded-full w-[52px] h-[52px] bg-[#D9D9D9]"
           />

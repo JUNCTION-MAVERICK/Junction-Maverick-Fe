@@ -1,5 +1,5 @@
 import { usePostAnalysisRequest } from "@/global/api/check-list/checklist.api";
-import { useCheckListStore } from "@/global/stores/checklistStore";
+import { useCheckListStore } from "@/global/stores/checkListStore";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
